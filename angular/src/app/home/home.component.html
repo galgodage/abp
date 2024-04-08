@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">CMS Content List</div>
+    </div>
+    <div class="card-body">
+      <!-- FORM FOR NEW TODO ITEMS -->
+      <form class="row row-cols-lg-auto g-3 align-items-center" (ngSubmit)="create()">
+        <div class="col-12">
+          <div class="input-group">
+            <input name="newNameText" type="text" [(ngModel)]="newNameText" class="form-control" placeholder="enter text..." />
+          </div>
+          
+          <div class="input-group">         
+          <ckeditor name="newDescription"  [(ngModel)]="newDescription" [editor]="Editor" ></ckeditor>
+         
+          </div>
+
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      <!-- TODO ITEMS LIST -->
+      <ul id="CMSContentList">
+        <li *ngFor="let todoItem of CMSContenItems">
+          <i class="fa fa-trash-o" (click)="delete(todoItem.id)"></i> <a [routerLink]="['/description', todoItem.id]">{{ todoItem.name }}</a>
+          <i class="fa fa-trash-o" (click)="delete(todoItem.id)"></i> <a [routerLink]="['/description', todoItem.id]">{{ todoItem.description }}</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</div>
+
